@@ -1,0 +1,3 @@
+bin/
+haskell-language-server-*/
+mitchell.project.freeze

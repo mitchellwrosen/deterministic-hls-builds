@@ -1,0 +1,36 @@
+packages:
+         ./
+         ./hls-graph
+         ./ghcide
+         ./hls-plugin-api
+         ./plugins/hls-tactics-plugin
+         ./plugins/hls-class-plugin
+         ./plugins/hls-eval-plugin
+         ./plugins/hls-explicit-imports-plugin
+         ./plugins/hls-refine-imports-plugin
+         ./plugins/hls-rename-plugin
+         ./plugins/hls-retrie-plugin
+         ./plugins/hls-haddock-comments-plugin
+         ./plugins/hls-splice-plugin
+         ./plugins/hls-pragmas-plugin
+         ./plugins/hls-module-name-plugin
+         ./plugins/hls-ormolu-plugin
+         ./plugins/hls-call-hierarchy-plugin
+         ./plugins/hls-alternate-number-format-plugin
+         ./plugins/hls-qualify-imported-names-plugin
+         ./plugins/hls-selection-range-plugin
+         ./plugins/hls-change-type-signature-plugin
+
+-- Standard location for temporary packages needed for particular environments
+-- For example it is used in the project gitlab mirror to help in the MAcOS M1 build script
+-- See https://github.com/haskell/haskell-language-server/blob/master/.gitlab-ci.yml
+optional-packages: vendored/*/*.cabal
+
+write-ghc-environment-files: never
+
+index-state: 2022-03-08T10:53:01Z
+
+constraints:
+    haskell-language-server -brittany -floskell -fourmolu -hlint -stylishhaskell,
+    hyphenation +embed,
+    ormolu == 0.4.0.0,
