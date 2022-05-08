@@ -14,10 +14,14 @@ Run `./build.sh` and you will end up with these (symlinks to) executables:
 You may want to copy these to a location already on your path, like
 
 ```
+# Linux-flavored cp
+cp -P ./bin/* ~/.local/bin
+
+# BSD-flavored cp
 cp -R ./bin/* ~/.local/bin
 ```
 
-(the `-R`, at least on this MacBook, copies the symlinks rather than follows them).
+(the `-P` / `-R` copies the symlinks rather than follows them).
 
 Note to self: here's how I made the freeze files:
 
