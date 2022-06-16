@@ -11,12 +11,26 @@ if [ ! -d "haskell-language-server-1.7.0.0" ]; then
     haskell-language-server-1.7.0.0
 fi
 
-ghcvers=("8.10.7" "9.0.2")
-for ghcver in "${ghcvers[@]}"; do
-  if [ ! -f "bin/haskell-language-server-$ghcver" ]; then
-    cp mitchell.project.freeze-$ghcver mitchell.project.freeze
-    (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell.project -w ghc-$ghcver --installdir=../bin)
-    mv bin/haskell-language-server bin/haskell-language-server-$ghcver
-    rm mitchell.project.freeze
-  fi
-done
+# GHC 8.10.7
+if [ ! -f "bin/haskell-language-server-8.10.7" ]; then
+  cp mitchell.project.freeze-8.10.7 mitchell.project.freeze
+  (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell.project -w ghc-8.10.7 --installdir=../bin)
+  mv bin/haskell-language-server bin/haskell-language-server-8.10.7
+  rm mitchell.project.freeze
+fi
+
+# GHC 9.0.2
+if [ ! -f "bin/haskell-language-server-9.0.2" ]; then
+  cp mitchell.project.freeze-9.0.2 mitchell.project.freeze
+  (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell.project -w ghc-9.0.2 --installdir=../bin)
+  mv bin/haskell-language-server bin/haskell-language-server-9.0.2
+  rm mitchell.project.freeze
+fi
+
+# GHC 9.2.2
+if [ ! -f "bin/haskell-language-server-9.2.2" ]; then
+  cp mitchell92.project.freeze-9.2.2 mitchell92.project.freeze
+  (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell92.project -w ghc-9.2.2 --installdir=../bin)
+  mv bin/haskell-language-server bin/haskell-language-server-9.2.2
+  rm mitchell92.project.freeze
+fi

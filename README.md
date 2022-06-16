@@ -8,7 +8,18 @@ Run `./build.sh` and you will end up with these (symlinks to) executables:
 ```
 ./bin/haskell-language-server-8.10.7
 ./bin/haskell-language-server-9.0.2
+./bin/haskell-language-server-9.2.2
 ./bin/haskell-language-server-wrapper
+```
+
+If you get "missing ffitarget_x86.h" when building with 9.2.2, maybe you're on a Mac and are hitting this issue:
+
+- https://gitlab.haskell.org/ghc/ghc/-/issues/21211
+
+If so, re-run as:
+
+```
+C_INCLUDE_PATH="$(xcrun --show-sdk-path)/usr/include/ffi" ./build.sh
 ```
 
 You may want to copy these to a location already on your path, like
@@ -23,9 +34,4 @@ cp -R ./bin/* ~/.local/bin
 
 (the `-P` / `-R` copies the symlinks rather than follows them).
 
-Note to self: here's how I made the freeze files:
-
-```
-cabal freeze --project-file mitchell.project -w ghc-$ver
-mv mitchell.project.freeze mitchell.project.freeze-$ver
-```
+Note to self: There's a `./freeze.sh` that makes the freeze files committed to this repo.
