@@ -2,6 +2,8 @@ This repo contains some files to build HLS the way I want it:
 
   - With a pinned version of `ormolu` (0.4.0.0), and, in fact, every transitive dependency.
   - Without plugins I don't use: `hlint` and other formatters that aren't `ormolu`.
+  - With the `refine-imports` plugin disabled, due to excessive memory usage: https://github.com/haskell/haskell-language-server/issues/2962
+    - I wonder what this plugin even does, are the docs for each plugin somewhere?
 
 Run `./build.sh` and you will end up with these (symlinks to) executables:
 

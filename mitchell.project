@@ -7,7 +7,6 @@ packages:
          ./plugins/hls-class-plugin
          ./plugins/hls-eval-plugin
          ./plugins/hls-explicit-imports-plugin
-         ./plugins/hls-refine-imports-plugin
          ./plugins/hls-rename-plugin
          ./plugins/hls-retrie-plugin
          ./plugins/hls-haddock-comments-plugin
@@ -28,6 +27,12 @@ write-ghc-environment-files: never
 index-state: 2022-03-08T10:53:01Z
 
 constraints:
-    haskell-language-server -brittany -floskell -fourmolu -hlint -stylishhaskell,
+    haskell-language-server
+      -brittany
+      -floskell
+      -fourmolu
+      -hlint
+      -refineImports
+      -stylishHaskell,
     hyphenation +embed,
     ormolu == 0.4.0.0,

@@ -3,23 +3,18 @@ packages:
          ./hls-graph
          ./ghcide
          ./hls-plugin-api
-         ./plugins/hls-tactics-plugin
+         ./plugins/hls-alternate-number-format-plugin
+         ./plugins/hls-call-hierarchy-plugin
+         ./plugins/hls-change-type-signature-plugin
          ./plugins/hls-class-plugin
          ./plugins/hls-eval-plugin
          ./plugins/hls-explicit-imports-plugin
-         ./plugins/hls-refine-imports-plugin
-         ./plugins/hls-rename-plugin
-         ./plugins/hls-retrie-plugin
-         ./plugins/hls-haddock-comments-plugin
-         ./plugins/hls-splice-plugin
-         ./plugins/hls-pragmas-plugin
          ./plugins/hls-module-name-plugin
          ./plugins/hls-ormolu-plugin
-         ./plugins/hls-call-hierarchy-plugin
-         ./plugins/hls-alternate-number-format-plugin
+         ./plugins/hls-pragmas-plugin
          ./plugins/hls-qualify-imported-names-plugin
+         ./plugins/hls-rename-plugin
          ./plugins/hls-selection-range-plugin
-         ./plugins/hls-change-type-signature-plugin
 
 with-compiler: ghc-9.2.2
 
@@ -41,6 +36,7 @@ constraints:
     -fourmolu
     -haddockComments
     -hlint
+    -refineImports
     -retrie
     -splice
     -stylishhaskell
