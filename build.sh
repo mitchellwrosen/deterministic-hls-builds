@@ -27,13 +27,13 @@ if [ ! -f "bin/haskell-language-server-9.0.2" ]; then
   rm mitchell.project.freeze
 fi
 
-# # GHC 9.2.2
-# if [ ! -f "bin/haskell-language-server-9.2.2" ]; then
-#   cp mitchell922.project.freeze-9.2.2 mitchell922.project.freeze
-#   (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell922.project -w ghc-9.2.2 --installdir=../bin)
-#   mv bin/haskell-language-server bin/haskell-language-server-9.2.2
-#   rm mitchell922.project.freeze
-# fi
+# GHC 9.2.2
+if [ ! -f "bin/haskell-language-server-9.2.2" ]; then
+  cp mitchell922.project.freeze-9.2.2 mitchell922.project.freeze
+  (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell922.project -w ghc-9.2.2 --installdir=../bin)
+  mv bin/haskell-language-server bin/haskell-language-server-9.2.2
+  rm mitchell922.project.freeze
+fi
 
 # GHC 9.2.3
 if [ ! -f "bin/haskell-language-server-9.2.3" ]; then
