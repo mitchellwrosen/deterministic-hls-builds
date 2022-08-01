@@ -1,0 +1,81 @@
+packages:
+         ./
+         ./hls-graph
+         ./ghcide
+         ./hls-plugin-api
+         ./plugins/hls-class-plugin
+         ./plugins/hls-eval-plugin
+         ./plugins/hls-explicit-imports-plugin
+         ./plugins/hls-refine-imports-plugin
+         ./plugins/hls-rename-plugin
+         ./plugins/hls-retrie-plugin
+         ./plugins/hls-haddock-comments-plugin
+         ./plugins/hls-splice-plugin
+         ./plugins/hls-pragmas-plugin
+         ./plugins/hls-module-name-plugin
+         ./plugins/hls-ormolu-plugin
+         ./plugins/hls-call-hierarchy-plugin
+         ./plugins/hls-alternate-number-format-plugin
+         ./plugins/hls-qualify-imported-names-plugin
+         ./plugins/hls-selection-range-plugin
+         ./plugins/hls-change-type-signature-plugin
+
+with-compiler: ghc-9.2.3
+
+tests: true
+
+package *
+  ghc-options: -haddock
+  test-show-details: direct
+
+write-ghc-environment-files: never
+
+index-state: 2022-04-19T07:18:40Z
+
+constraints:
+  haskell-language-server
+    +ignore-plugins-ghc-bounds
+    -brittany
+    -floskell
+    -fourmolu
+    -haddockComments
+    -hlint
+    -retrie
+    -splice
+    -stylishhaskell
+    -tactic,
+  ormolu == 0.4.0.0,
+
+allow-newer:
+  -- for shake-bench
+  Chart:lens,
+  Chart-diagrams:lens,
+
+  -- for head.hackage
+  primitive-unlifted:base,
+
+  -- https://github.com/lspitzner/multistate/pull/8
+  multistate:base,
+  -- https://github.com/lspitzner/data-tree-print/pull/3
+  data-tree-print:base,
+  -- https://github.com/lspitzner/butcher/pull/8
+  butcher:base,
+
+  ormolu:ghc-lib-parser,
+
+  -- See https://github.com/mpickering/apply-refact/pull/116
+  apply-refact:base,
+
+  implicit-hie-cradle:bytestring,
+  implicit-hie-cradle:time,
+
+  -- For tactics
+  ghc-source-gen:ghc,
+
+  -- for ghcide:test via ghc-typelits-knownnat
+  ghc-typelits-natnormalise:ghc-bignum,
+
+  hiedb:base
+
+allow-older:
+  primitive-extras:primitive-unlifted

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 if [ ! -d "haskell-language-server-1.7.0.0" ]; then
   git clone \
@@ -27,10 +27,26 @@ if [ ! -f "bin/haskell-language-server-9.0.2" ]; then
   rm mitchell.project.freeze
 fi
 
-# GHC 9.2.2
-if [ ! -f "bin/haskell-language-server-9.2.2" ]; then
-  cp mitchell92.project.freeze-9.2.2 mitchell92.project.freeze
-  (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell92.project -w ghc-9.2.2 --installdir=../bin)
-  mv bin/haskell-language-server bin/haskell-language-server-9.2.2
-  rm mitchell92.project.freeze
+# # GHC 9.2.2
+# if [ ! -f "bin/haskell-language-server-9.2.2" ]; then
+#   cp mitchell922.project.freeze-9.2.2 mitchell922.project.freeze
+#   (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell922.project -w ghc-9.2.2 --installdir=../bin)
+#   mv bin/haskell-language-server bin/haskell-language-server-9.2.2
+#   rm mitchell922.project.freeze
+# fi
+
+# GHC 9.2.3
+if [ ! -f "bin/haskell-language-server-9.2.3" ]; then
+  cp mitchell923.project.freeze-9.2.3 mitchell923.project.freeze
+  (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell923.project -w ghc-9.2.3 --installdir=../bin)
+  mv bin/haskell-language-server bin/haskell-language-server-9.2.3
+  rm mitchell923.project.freeze
 fi
+
+# GHC 9.2.4
+# if [ ! -f "bin/haskell-language-server-9.2.4" ]; then
+#   cp mitchell924.project.freeze-9.2.4 mitchell924.project.freeze
+#   (cd haskell-language-server-1.7.0.0; cabal install --project ../mitchell924.project -w ghc-9.2.4 --installdir=../bin)
+#   mv bin/haskell-language-server bin/haskell-language-server-9.2.4
+#   rm mitchell924.project.freeze
+# fi
