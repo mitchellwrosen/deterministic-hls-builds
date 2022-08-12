@@ -35,5 +35,3 @@ cp -R ./bin/* ~/.local/bin
 ```
 
 (the `-P` / `-R` copies the symlinks rather than follows them).
-
-Note to self: There's a `./freeze.sh` that makes the freeze files committed to this repo.

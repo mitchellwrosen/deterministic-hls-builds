@@ -1,0 +1,126 @@
+packages:
+         ./
+         ./hls-graph
+         ./ghcide
+         ./hls-plugin-api
+         ./plugins/hls-class-plugin
+         ./plugins/hls-eval-plugin
+         ./plugins/hls-explicit-imports-plugin
+         ./plugins/hls-rename-plugin
+         ./plugins/hls-haddock-comments-plugin
+         ./plugins/hls-splice-plugin
+         ./plugins/hls-pragmas-plugin
+         ./plugins/hls-module-name-plugin
+         ./plugins/hls-ormolu-plugin
+         ./plugins/hls-call-hierarchy-plugin
+         ./plugins/hls-alternate-number-format-plugin
+         ./plugins/hls-qualify-imported-names-plugin
+         ./plugins/hls-selection-range-plugin
+         ./plugins/hls-change-type-signature-plugin
+
+with-compiler: ghc-9.4.1
+
+tests: true
+
+package *
+  ghc-options: -haddock
+  test-show-details: direct
+
+write-ghc-environment-files: never
+
+-- index-state: 2022-05-20T00:00:00Z
+
+constraints:
+  haskell-language-server
+    +ignore-plugins-ghc-bounds
+    -brittany
+    -floskell
+    -fourmolu
+    -haddockComments
+    -hlint
+    -refineImports
+    -retrie
+    -splice
+    -stylishhaskell
+    -tactic,
+  ormolu == 0.4.0.0,
+  -- solver overrides due to bad upper bounds
+  dependent-sum == 0.7.1.0,
+
+allow-newer:
+  -- for shake-bench
+  Chart:lens,
+  Chart-diagrams:lens,
+
+  -- for head.hackage
+  primitive-unlifted:base,
+
+  -- https://github.com/lspitzner/multistate/pull/8
+  multistate:base,
+  -- https://github.com/lspitzner/data-tree-print/pull/3
+  data-tree-print:base,
+  -- https://github.com/lspitzner/butcher/pull/8
+  butcher:base,
+
+  ormolu:ghc-lib-parser,
+
+  -- See https://github.com/mpickering/apply-refact/pull/116
+  apply-refact:base,
+
+  implicit-hie-cradle:bytestring,
+  implicit-hie-cradle:time,
+
+  -- For tactics
+  ghc-source-gen:ghc,
+
+  -- for ghcide:test via ghc-typelits-knownnat
+  ghc-typelits-natnormalise:ghc-bignum,
+
+  hiedb:base,
+
+  -- These are due to this index state being just after 9.4.1 was released
+  aeson:ghc-prim,
+  aeson:template-haskell,
+  assoc:base,
+  async:base,
+  attoparsec:ghc-prim,
+  constraints-extras:base,
+  constraints-extras:template-haskell,
+  cryptohash-md5:base,
+  cryptohash-sha1:base,
+  data-fix:base,
+  entropy:Cabal,
+  ghc-trace-events:base,
+  haddock-library:base,
+  hashable:base,
+  hashable:ghc-bignum,
+  hie-bios:ghc,
+  hie-compat:base,
+  hsc2hs:base,
+  hslogger:base,
+  indexed-traversable:base,
+  indexed-traversable-instances:base,
+  integer-logarithms:base,
+  integer-logarithms:ghc-bignum,
+  integer-logarithms:ghc-prim,
+  lens:template-haskell,
+  OneTuple:base,
+  parallel:base,
+  retrie:base,
+  semialign:base,
+  text-short:base,
+  text-short:ghc-prim,
+  text-short:template-haskell,
+  time-compat:base,
+  type-equality:base,
+  scientific:base,
+  scientific:template-haskell,
+  some:base,
+  split:base,
+  splitmix:base,
+  these:base,
+  uuid:time,
+  uuid-types:template-haskell,
+
+allow-older:
+  primitive-extras:primitive-unlifted
